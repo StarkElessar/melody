@@ -25,8 +25,11 @@
   font-display: fallback;
 }
 @font-face {
-	font-family: 'BebasNeue';
-	src: url('@fonts/BebasNeue-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
+  font-family: "BebasNeue";
+  src:  local("BebasNeueRegular"), 
+        url("@fonts/BebasNeueRegular.woff2") format("woff2"),
+        url("@fonts/BebasNeueRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
 }

@@ -3,3 +3,8 @@
   font-weight: $font-weight;
   font-style: $font-style;
 }
+@mixin fontBebas() {
+  font-family: 'BebasNeue';
+  font-weight: 400;
+  font-style: normal;
+}
