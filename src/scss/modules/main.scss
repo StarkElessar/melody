@@ -26,6 +26,9 @@
         opacity: 1;
       }
     }
+    &-home .current-floor {
+      opacity: 1;
+    }
   }
   &__nav {
     display: flex;
