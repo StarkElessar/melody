@@ -47,8 +47,13 @@ activeLink()
 // Вариант написания скрипта на чистом JavaScript
 document.addEventListener('DOMContentLoaded', () => {
   let currentFloor    = 2
+  let currentFlat     = 1
+  let currentNumber   = ''
   const pathFloor     = document.querySelectorAll('[data-floor]')
-  const imageParent   = document.querySelector('.main__image-home')
+  const pathFlat      = document.querySelectorAll('[data-flat]')
+  const nameFlats     = document.querySelectorAll('.flat__list-link')
+  const floorParent   = document.querySelector('.main__image-home')
+  const flatsParent   = document.querySelector('.flats')
   const counterPlace  = document.querySelector('.counter__number')
   const counterUp     = document.querySelector('.counter__arrow-up')
   const counterDown   = document.querySelector('.counter__arrow-down')
@@ -56,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
   const getZero = number => number >= 0 && number < 10 ? `0${number}` : number
   
-  imageParent.addEventListener('mouseover', (event) => {
-    const target    = event.target,
-          thisFloor = target.hasAttribute('data-floor')
+  floorParent.addEventListener('mouseover', (event) => {
+    const target    = event.target
+    const thisFloor = target.hasAttribute('data-floor')
     
     if (target && thisFloor) {
       pathFloor.forEach((path) => path.classList.remove('current-floor'))
@@ -86,6 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  modalWindow.addEventListener('mouseover', (event) => {
+    const target        = event.target
+    const thisFlat      = target.hasAttribute('data-flat')
+    const thisNameFlat  = target.hasAttribute('data-flat-number')
+    
+    if (target && (thisFlat || thisNameFlat)) {
+      currentFlat = (target.getAttribute('data-flat') || target.getAttribute('data-flat-number'))
+      pathFlat.forEach((path) => path.classList.remove('current-flat'))
+      nameFlats.forEach((flat) => flat.classList.remove('current-flat'))
+      document.querySelector(`[data-flat-number="${currentFlat}"]`).classList.toggle('current-flat')
+      document.querySelector(`[data-flat="${currentFlat}"]`).classList.toggle('current-flat')
+    }
+  })
+
   document.addEventListener('click', (event) => {
     const target              = event.target
     const showModalBtn        = target.classList.contains('main__nav-btn')
@@ -99,10 +118,119 @@ document.addEventListener('DOMContentLoaded', () => {
     if (target && (target.hasAttribute('data-floor') || showModalBtn)) {
       modalWindow.classList.add('show')
       currentFloorInModal.innerHTML = currentNumberFloor
-      
+      changeCurrentNumberOfFlat()
     }
     if (target && (modalCloseBtn || svgBtn || pathBtn || modalCover)) {
       modalWindow.classList.remove('show')
     }
   })
+
+  function changeCurrentNumberOfFlat() {
+    const currentNumberOfFlats  = document.querySelectorAll('.number-of-flat')
+    const counterFloor          = document.querySelector('.modal__counter')
+    const numbers = ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'] 
+
+    if (counterPlace.innerHTML == '02') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = numbers[index]
+      })
+    }
+    if (counterPlace.innerHTML == '03') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 10
+      })
+    }
+    if (counterPlace.innerHTML == '04') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 20
+      })
+    }
+    if (counterPlace.innerHTML == '05') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 30
+      })
+    }
+    if (counterPlace.innerHTML == '06') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 40
+      })
+    }
+    if (counterPlace.innerHTML == '07') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 50
+      })
+    }
+    if (counterPlace.innerHTML == '08') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 60
+      })
+    }
+    if (counterPlace.innerHTML == '09') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 70
+      })
+    }
+    if (counterPlace.innerHTML == '10') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 80
+      })
+    }
+    if (counterPlace.innerHTML == '11') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 90
+      })
+    }
+    if (counterPlace.innerHTML == '12') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 100
+      })
+    }
+    if (counterPlace.innerHTML == '13') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 110
+      })
+    }
+    if (counterPlace.innerHTML == '14') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 120
+      })
+    }
+    if (counterPlace.innerHTML == '15') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 130
+      })
+    }
+    if (counterPlace.innerHTML == '16') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 140
+      })
+    }
+    if (counterPlace.innerHTML == '17') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 150
+      })
+    }
+    if (counterPlace.innerHTML == '18') {
+      currentNumberOfFlats.forEach((flat, index) => {
+        flat.innerHTML = ''
+        flat.innerHTML = +numbers[index] + 160
+      })
+    }
+  }
 })

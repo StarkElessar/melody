@@ -11,7 +11,7 @@
   opacity: 0;
   transform: scale(0);
   backdrop-filter: blur(2px);
-  transition: opacity 350ms ease-in-out 0ms;
+  transition: opacity 400ms ease-in-out 0ms;
   &.show {
     opacity: 1;
     transform: scale(1);
@@ -28,14 +28,18 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-60%, 50%);
+    transform: translate(-60%, 50%) rotate(0deg);
     border: 0;
     background: transparent;
+    transition: 280ms;
     & svg {
       transition: 280ms;
     }
     @media (any-hover: hover) {
         &:hover {
+          & {
+            transform: translate(-60%, 50%) rotate(45deg);
+          }
           & svg {
             transform: scale(0.8);
           }
@@ -88,6 +92,24 @@
           text-decoration: underline;
         }
       }
+      &.current-flat {
+        color: $color-active;
+          text-decoration: underline;
+      }
+    }
+  }
+}
+
+.flats {
+  path {
+    cursor: pointer;
+    opacity: 0;
+    transition: 180ms;
+    &:hover {
+      opacity: 1;
+    }
+    &.current-flat {
+      opacity: 1;
     }
   }
 }
