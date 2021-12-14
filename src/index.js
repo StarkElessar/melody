@@ -126,9 +126,88 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   function changeCurrentNumberOfFlat() {
-    const currentNumberOfFlats  = document.querySelectorAll('.number-of-flat')
-    const counterFloor          = document.querySelector('.modal__counter')
-    const numbers = ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'] 
+    const currentNumberOfFlats = document.querySelectorAll('.number-of-flat')
+    const counterFloor = document.querySelector('.modal__counter')
+    const numbers = ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+    const numbersForLoop = [
+      {
+        floor: '02',
+        numbers: 0
+      }, 
+      {
+        floor: '03',
+        numbers: 10
+      }, 
+      {
+        floor: '04',
+        numbers: 20
+      }, 
+      {
+        floor: '05',
+        numbers: 30
+      }, 
+      {
+        floor: '06',
+        numbers: 40
+      }, 
+      {
+        floor: '07',
+        numbers: 50
+      }, 
+      {
+        floor: '08',
+        numbers: 60
+      },
+      {
+        floor: '09',
+        numbers: 70
+      },
+      {
+        floor: '10',
+        numbers: 80
+      },
+      {
+        floor: '11',
+        numbers: 90
+      },
+      {
+        floor: '12',
+        numbers: 100
+      },
+      {
+        floor: '13',
+        numbers: 110
+      },
+      {
+        floor: '14',
+        numbers: 120
+      },
+      {
+        floor: '15',
+        numbers: 130
+      },
+      {
+        floor: '16',
+        numbers: 140
+      },
+      {
+        floor: '17',
+        numbers: 150
+      },
+      {
+        floor: '18',
+        numbers: 160
+      }
+    ]
+
+    // numbersForLoop.forEach((id, num) => {
+    //   if (counterPlace.innerHTML == `'${id}'`) {
+    //     currentNumberOfFlats.forEach((flat, index) => {
+    //       flat.innerHTML = ''
+    //       flat.innerHTML = numbers[index] + num
+    //     })
+    //   }
+    // })
 
     if (counterPlace.innerHTML == '02') {
       currentNumberOfFlats.forEach((flat, index) => {
