@@ -47,11 +47,12 @@ activeLink()
 // Вариант написания скрипта на чистом JavaScript
 document.addEventListener('DOMContentLoaded', () => {
   let currentFloor    = 2
-  const imageParent   = document.querySelector('.main__image-home'),
-        counterPlace  = document.querySelector('.counter__number'),
-        counterUp     = document.querySelector('.counter__arrow-up'),
-        counterDown   = document.querySelector('.counter__arrow-down'),
-        pathFloor     = document.querySelectorAll('[data-floor]')
+  const pathFloor     = document.querySelectorAll('[data-floor]')
+  const imageParent   = document.querySelector('.main__image-home')
+  const counterPlace  = document.querySelector('.counter__number')
+  const counterUp     = document.querySelector('.counter__arrow-up')
+  const counterDown   = document.querySelector('.counter__arrow-down')
+  const modalWindow   = document.querySelector('.modal')
     
   const getZero = number => number >= 0 && number < 10 ? `0${number}` : number
   
@@ -82,6 +83,26 @@ document.addEventListener('DOMContentLoaded', () => {
       counterPlace.innerHTML = getZero(currentFloor)
       pathFloor.forEach((path) => path.classList.remove('current-floor'))
       document.querySelector(`[data-floor="${getZero(currentFloor)}"]`).classList.toggle('current-floor')
+    }
+  })
+
+  document.addEventListener('click', (event) => {
+    const target              = event.target
+    const showModalBtn        = target.classList.contains('main__nav-btn')
+    const modalCover          = target.classList.contains('modal')
+    const modalCloseBtn       = target.classList.contains('modal__close-btn')
+    const svgBtn              = target.classList.contains('svg__close-btn')
+    const pathBtn             = target.classList.contains('path__close-btn')
+    const currentNumberFloor  = document.querySelector('.counter__number').innerHTML
+    let currentFloorInModal   = document.querySelector('.modal__counter')
+    
+    if (target && (target.hasAttribute('data-floor') || showModalBtn)) {
+      modalWindow.classList.add('show')
+      currentFloorInModal.innerHTML = currentNumberFloor
+      
+    }
+    if (target && (modalCloseBtn || svgBtn || pathBtn || modalCover)) {
+      modalWindow.classList.remove('show')
     }
   })
 })
