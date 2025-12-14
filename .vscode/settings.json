@@ -1,12 +1,11 @@
 {
-  "path-intellisense.mappings": {
-    "/images": "${workspaceFolder}/assets/images",
-    "/fonts": "${workspaceFolder}/assets/fonts",
-    "/": "${workspaceFolder}/assets"
-  },
-  "files.exclude": {
-    "**/dist": true,
-    "**/node_modules": true
-  }
+	"path-intellisense.mappings": {
+		"/images": "${workspaceFolder}/public/images",
+		"/fonts": "${workspaceFolder}/public/fonts",
+		"/": "${workspaceFolder}/public"
+	},
+	"files.exclude": {
+		"**/dist": true,
+		"**/node_modules": true
+	}
 }
-

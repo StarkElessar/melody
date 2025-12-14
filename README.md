@@ -4,8 +4,8 @@
 
 Основные изменения:
 - удалены Webpack-скрипты и конфигурации
-- добавлен `vite.config.js` (root: `src`, publicDir: `assets`, алиасы `@` -> `src`, `@fonts` -> `assets/fonts`)
-- пути к изображениям и шрифтам в `src/index.html` и `src/scss/fonts.scss` обновлены на `/images/...` и `/fonts/...` соответственно
+- добавлен `vite.config.js` (root: `src`, publicDir: `public`, алиасы `@` -> `src`, `@fonts` -> `public/fonts`)
+- пути к изображениям и шрифтам в `src/index.html` и `src/scss/fonts.scss` обновлены на `/images/...` и `/fonts/...` соответственно (файлы лежат в `public/`)
 - обновлён `package.json` со скриптами для Vite
 
 Как запустить локально:
@@ -24,9 +24,28 @@ npm run build
 npm run preview
 ```
 
-Примечания и проверки:
-- Файлы из папки `assets/` обслуживаются как статические файлы (publicDir), поэтому в коде используйте `/images/...` и `/fonts/...`.
-- Если вы предпочитаете, можно переместить `src/index.html` в корень и убрать `root` в `vite.config.js`.
-- Убедитесь, что `jquery` импортируется в `src/index.js` и если нужно, доступен глобально (window.$ = $).
+Деплой на GitHub Pages
 
-Если хотите, могу выполнить дополнительные улучшения: автоматическое определение env-переменных, подключение плагина для legacy-браузеров, или удаление оставшихся webpack-зависимостей из `package-lock.json` и node_modules.
+В проект уже добавлен пакет `gh-pages` и два скрипта в `package.json`:
+- `predeploy` — выполняет `npm run build`
+- `deploy` — публикует содержимое `dist/` в ветку `gh-pages`:
+
+```bash
+# соберёт проект и опубликует dist/ в ветку gh-pages (создаст ветку, если её нет)
+npm run deploy
+```
+
+Важно:
+- `npm run deploy` выполнит `git push` в ваш удалённый репозиторий. Убедитесь, что у вас есть права на запись и что удалённый origin настроен.
+- Если вы хотите предварительно проверить результат локально, выполните `npm run build` и `npm run preview`.
+
+IDE-предупреждения
+
+Пути `/images/...` и `/fonts/...` обслуживаются Vite из папки `public/` (см. `vite.config.js`). Некоторые IDE могут показывать предупреждения о нерезолвленных путях — в WebStorm пометьте `public/` как Resources Root. Для VS Code добавлен `.vscode/settings.json` с маппингом для Path Intellisense.
+
+Дополнительно
+
+- Если нужна поддержка старых браузеров (IE11 и т.п.), можно подключить `@vitejs/plugin-legacy`.
+- Для очистки старых артефактов Webpack можно удалить `node_modules` и `package-lock.json`, затем выполнить `npm install`.
+
+Если хотите, могу выполнить `npm run deploy` прямо сейчас — но он запушит ветку `gh-pages` в ваш origin. Разрешаете выполнить деплой? Если да, уточните, хотите ли, чтобы я создавал ветку `gh-pages` от текущей ветки (обычно `main` или `master`) или от другой ветки.

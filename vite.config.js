@@ -3,11 +3,12 @@ import path from 'node:path';
 
 export default defineConfig({
 	root: path.resolve(__dirname, 'src'),
-	publicDir: path.resolve(__dirname, 'assets'),
+	base: './',
+	publicDir: path.resolve(__dirname, 'public'),
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, 'src'),
-			'@fonts': path.resolve(__dirname, 'assets/fonts')
+			'@fonts': path.resolve(__dirname, 'public/fonts')
 		}
 	},
 	build: {
@@ -18,4 +19,3 @@ export default defineConfig({
 		}
 	}
 });
-
