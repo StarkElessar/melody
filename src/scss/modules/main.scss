@@ -92,15 +92,17 @@
 			border: none;
 			background-color: transparent;
 
-			& svg path {
-				fill: $color-active;
-				transition: all 200ms;
+			&:disabled {
+				cursor: not-allowed;
+				opacity: .4;
 			}
 
-			&:hover {
-				svg path {
-					fill: $color-active-hover;
-					filter: drop-shadow(1px 1px 2px rgba(#000, .3));
+			&:not(:disabled) {
+				&:hover {
+					svg path {
+						fill: $color-active-hover;
+						filter: drop-shadow(1px 1px 2px rgba(#000, .3));
+					}
 				}
 			}
 
@@ -108,9 +110,9 @@
 				transform: rotateX(180deg);
 			}
 
-			&:disabled {
-				cursor: not-allowed;
-				opacity: .4;
+			& svg path {
+				fill: $color-active;
+				transition: all 200ms;
 			}
 		}
 
