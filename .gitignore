@@ -1,1 +1,9 @@
+.DS_Store
+.idea
+.vscode
+!.vscode/settings.json
+
 node_modules
+dist
+build
+.env
