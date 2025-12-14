@@ -8,7 +8,6 @@ export function initApp() {
 	const counterDown = document.querySelector('.counter__arrow-down');
 	const modalWindow = document.querySelector('.modal');
 
-	// ---------- Configuration / defaults (no magic numbers inline) ----------
 	const DEFAULTS = {
 		MIN_FLOOR: 2,
 		MAX_FLOOR: 18,
@@ -16,16 +15,15 @@ export function initApp() {
 		BASE_START: 21,
 		MAX_BASE_START: 10000,
 		PAD_THRESHOLD: 10,
-		INITIAL_FLAT: 1
+		INITIAL_FLAT: 1,
 	};
 
 	// allow overriding via data attributes on .modal (optional)
-	const modalEl = document.querySelector('.modal');
 	const cfgFromDom = {
-		minFloor: modalEl?.dataset?.minFloor ? Number(modalEl.dataset.minFloor) : undefined,
-		maxFloor: modalEl?.dataset?.maxFloor ? Number(modalEl.dataset.maxFloor) : undefined,
-		baseStart: modalEl?.dataset?.baseStart ? Number(modalEl.dataset.baseStart) : undefined,
-		flatsCount: modalEl?.dataset?.flatsCount ? Number(modalEl.dataset.flatsCount) : undefined
+		minFloor: modalWindow?.dataset?.minFloor ? Number(modalWindow.dataset.minFloor) : undefined,
+		maxFloor: modalWindow?.dataset?.maxFloor ? Number(modalWindow.dataset.maxFloor) : undefined,
+		baseStart: modalWindow?.dataset?.baseStart ? Number(modalWindow.dataset.baseStart) : undefined,
+		flatsCount: modalWindow?.dataset?.flatsCount ? Number(modalWindow.dataset.flatsCount) : undefined,
 	};
 
 	const pad = n => (n >= 0 && n < DEFAULTS.PAD_THRESHOLD ? `0${n}` : String(n));
@@ -40,6 +38,7 @@ export function initApp() {
 			)
 		)
 		.sort((a, b) => a - b);
+
 	const minFloor = cfgFromDom.minFloor ?? (floors.length ? floors[0] : DEFAULTS.MIN_FLOOR);
 	const maxFloor = cfgFromDom.maxFloor ?? (floors.length ? floors[floors.length - 1] : DEFAULTS.MAX_FLOOR);
 
