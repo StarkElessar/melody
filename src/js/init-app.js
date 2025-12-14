@@ -13,6 +13,14 @@ export function initApp() {
 
 	const getZero = number => number >= 0 && number < 10 ? `0${number}` : number;
 
+	function updateArrows() {
+		if (counterUp) counterUp.disabled = currentFloor >= 18;
+		if (counterDown) counterDown.disabled = currentFloor <= 2;
+	}
+
+	// Установить начальное состояние кнопок
+	updateArrows();
+
 	if (floorParent) {
 		floorParent.addEventListener('mouseover', (event) => {
 			const target = event.target;
@@ -24,6 +32,7 @@ export function initApp() {
 				if (counterPlace) counterPlace.innerHTML = currentFloor;
 				const el = document.querySelector(`[data-floor="${currentFloor}"]`);
 				if (el) el.classList.toggle('current-floor');
+				updateArrows();
 			}
 		});
 	}
@@ -36,6 +45,7 @@ export function initApp() {
 				pathFloor.forEach((path) => path.classList.remove('current-floor'));
 				const el = document.querySelector(`[data-floor="${getZero(currentFloor)}"]`);
 				if (el) el.classList.toggle('current-floor');
+				updateArrows();
 			}
 		});
 	}
@@ -47,7 +57,8 @@ export function initApp() {
 				if (counterPlace) counterPlace.innerHTML = getZero(currentFloor);
 				pathFloor.forEach((path) => path.classList.remove('current-floor'));
 				const el = document.querySelector(`[data-floor="${getZero(currentFloor)}"]`);
-				if (el) el.classList.toggle('current-floor');
+				el?.classList.toggle('current-floor');
+				updateArrows();
 			}
 		});
 	}
@@ -125,4 +136,3 @@ export function initApp() {
 		});
 	}
 }
-

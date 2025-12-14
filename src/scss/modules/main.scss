@@ -107,6 +107,11 @@
 			&-down {
 				transform: rotateX(180deg);
 			}
+
+			&:disabled {
+				cursor: not-allowed;
+				opacity: .4;
+			}
 		}
 
 		&__number {
