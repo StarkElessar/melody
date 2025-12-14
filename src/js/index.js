@@ -1,18 +1,15 @@
-import '../scss/index.scss';
-
-import activeLink from './active-link';
-
-activeLink();
+import { initActiveLink } from './init-active-link';
 
 document.addEventListener('DOMContentLoaded', () => {
+	initActiveLink();
+
 	let currentFloor = 2;
 	let currentFlat = 1;
-	let currentNumber = '';
+
 	const pathFloor = document.querySelectorAll('[data-floor]');
 	const pathFlat = document.querySelectorAll('[data-flat]');
 	const nameFlats = document.querySelectorAll('.flat__list-link');
 	const floorParent = document.querySelector('.main__image-home');
-	const flatsParent = document.querySelector('.flats');
 	const counterPlace = document.querySelector('.counter__number');
 	const counterUp = document.querySelector('.counter__arrow-up');
 	const counterDown = document.querySelector('.counter__arrow-down');
@@ -86,189 +83,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function changeCurrentNumberOfFlat() {
 		const currentNumberOfFlats = document.querySelectorAll('.number-of-flat');
-		const counterFloor = document.querySelector('.modal__counter');
 		const numbers = ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
 		const numbersForLoop = [
-			{
-				floor: '02',
-				numbers: 0
-			},
-			{
-				floor: '03',
-				numbers: 10
-			},
-			{
-				floor: '04',
-				numbers: 20
-			},
-			{
-				floor: '05',
-				numbers: 30
-			},
-			{
-				floor: '06',
-				numbers: 40
-			},
-			{
-				floor: '07',
-				numbers: 50
-			},
-			{
-				floor: '08',
-				numbers: 60
-			},
-			{
-				floor: '09',
-				numbers: 70
-			},
-			{
-				floor: '10',
-				numbers: 80
-			},
-			{
-				floor: '11',
-				numbers: 90
-			},
-			{
-				floor: '12',
-				numbers: 100
-			},
-			{
-				floor: '13',
-				numbers: 110
-			},
-			{
-				floor: '14',
-				numbers: 120
-			},
-			{
-				floor: '15',
-				numbers: 130
-			},
-			{
-				floor: '16',
-				numbers: 140
-			},
-			{
-				floor: '17',
-				numbers: 150
-			},
-			{
-				floor: '18',
-				numbers: 160
-			}
+			{ floor: '02', numbers: 0 },
+			{ floor: '03', numbers: 10 },
+			{ floor: '04', numbers: 20 },
+			{ floor: '05', numbers: 30 },
+			{ floor: '06', numbers: 40 },
+			{ floor: '07', numbers: 50 },
+			{ floor: '08', numbers: 60 },
+			{ floor: '09', numbers: 70 },
+			{ floor: '10', numbers: 80 },
+			{ floor: '11', numbers: 90 },
+			{ floor: '12', numbers: 100 },
+			{ floor: '13', numbers: 110 },
+			{ floor: '14', numbers: 120 },
+			{ floor: '15', numbers: 130 },
+			{ floor: '16', numbers: 140 },
+			{ floor: '17', numbers: 150 },
+			{ floor: '18', numbers: 160 }
 		];
 
-		// numbersForLoop.forEach((id, num) => {
-		//   if (counterPlace.innerHTML == `'${id}'`) {
-		//     currentNumberOfFlats.forEach((flat, index) => {
-		//       flat.innerHTML = ''
-		//       flat.innerHTML = numbers[index] + num
-		//     })
-		//   }
-		// })
+		// Находим текущий этаж и соответствующее смещение (offset)
+		const currentFloorStr = counterPlace && counterPlace.innerHTML ? counterPlace.innerHTML : '';
+		const found = numbersForLoop.find(item => item.floor === currentFloorStr);
+		const offset = found ? found.numbers : 0;
 
-		if (counterPlace.innerHTML == '02') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = numbers[index];
-			});
-		}
-		if (counterPlace.innerHTML == '03') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 10;
-			});
-		}
-		if (counterPlace.innerHTML == '04') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 20;
-			});
-		}
-		if (counterPlace.innerHTML == '05') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 30;
-			});
-		}
-		if (counterPlace.innerHTML == '06') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 40;
-			});
-		}
-		if (counterPlace.innerHTML == '07') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 50;
-			});
-		}
-		if (counterPlace.innerHTML == '08') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 60;
-			});
-		}
-		if (counterPlace.innerHTML == '09') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 70;
-			});
-		}
-		if (counterPlace.innerHTML == '10') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 80;
-			});
-		}
-		if (counterPlace.innerHTML == '11') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 90;
-			});
-		}
-		if (counterPlace.innerHTML == '12') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 100;
-			});
-		}
-		if (counterPlace.innerHTML == '13') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 110;
-			});
-		}
-		if (counterPlace.innerHTML == '14') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 120;
-			});
-		}
-		if (counterPlace.innerHTML == '15') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 130;
-			});
-		}
-		if (counterPlace.innerHTML == '16') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 140;
-			});
-		}
-		if (counterPlace.innerHTML == '17') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 150;
-			});
-		}
-		if (counterPlace.innerHTML == '18') {
-			currentNumberOfFlats.forEach((flat, index) => {
-				flat.innerHTML = '';
-				flat.innerHTML = +numbers[index] + 160;
-			});
-		}
+		// Заполняем номера квартир одним циклом
+		currentNumberOfFlats.forEach((flat, index) => {
+			const base = Number(numbers[index]) || 0;
+			flat.innerHTML = String(base + offset);
+		});
 	}
 });
