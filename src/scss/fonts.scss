@@ -1,35 +1,32 @@
 @font-face {
-  font-family: 'Roboto';
-  src:  url('@fonts/Roboto-Bold.woff2') format('woff2'), 
-        url('@fonts/Roboto-Bold.woff') format('woff'), 
-        url('@fonts/Roboto-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: fallback;
+	font-family: "Roboto";
+	src: url("/fonts/Roboto-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: 'Roboto';
-  src:  url('@fonts/Roboto-Regular.woff2') format('woff2'), 
-        url('@fonts/Roboto-Regular.woff') format('woff'), 
-        url('@fonts/Roboto-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
+	font-family: "Roboto";
+	src: url("/fonts/Roboto-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: 'Roboto';
-  src:  url('@fonts/Roboto-Italic.woff') format('woff'), 
-        url('@fonts/Roboto-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: fallback;
+	font-family: "Roboto";
+	src: url("/fonts/Roboto-Italic.woff") format("woff");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
 }
+
 @font-face {
-  font-family: "BebasNeue";
-  src:  local("BebasNeueRegular"), 
-        url("@fonts/BebasNeueRegular.woff2") format("woff2"),
-        url("@fonts/BebasNeueRegular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
+	font-family: "BebasNeue";
+	src: local("BebasNeueRegular"),
+	url("/fonts/BebasNeueRegular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }

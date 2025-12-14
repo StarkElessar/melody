@@ -1,115 +1,133 @@
+@use "../var" as *;
+@use "../mixins" as *;
+
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(#000, .85);
-  opacity: 0;
-  transform: scale(0);
-  backdrop-filter: blur(2px);
-  transition: opacity 400ms ease-in-out 0ms;
-  &.show {
-    opacity: 1;
-    transform: scale(1);
-  }
-  &__body {
-    position: relative;
-    max-width: 1000px;
-    min-height: 565px;
-    display: flex;
-    flex-grow: 1;
-    background: #ebebeb;
-  }
-  &__close-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-60%, 50%) rotate(0deg);
-    border: 0;
-    background: transparent;
-    transition: 280ms;
-    & svg {
-      transition: 280ms;
-    }
-    @media (any-hover: hover) {
-        &:hover {
-          & {
-            transform: translate(-60%, 50%) rotate(45deg);
-          }
-          & svg {
-            transform: scale(0.8);
-          }
-        }
-      }
-  }
-  &__img {
-    width: 60%;
-    padding: 50px;
-    text-align: center;
-    background: transparent;
-  }
-  &__title {
-    @include fontBebas();
-    font-size: 24px;
-    color: #000;
-    margin-top: 0;
-  }
-  &__info {
-    width: 40%;
-    padding: 50px; 
-    background: #fff;
-    text-align: left;
-    &-description {
-      @include fontRoboto(italic, 400);
-      font-size: 16px;
-      color: $color-brown;
-      line-height: 18,75px;
-      margin-top: 56px;
-    }
-  }
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(#000, .85);
+	opacity: 0;
+	transform: scale(0);
+	backdrop-filter: blur(2px);
+	transition: opacity 400ms ease-in-out 0ms;
+
+	&.show {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&__body {
+		position: relative;
+		max-width: 1000px;
+		min-height: 565px;
+		display: flex;
+		flex-grow: 1;
+		background: #ebebeb;
+	}
+
+	&__close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: translate(-60%, 50%) rotate(0deg);
+		border: 0;
+		background: transparent;
+		transition: 280ms;
+
+		& svg {
+			transition: 280ms;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				& {
+					transform: translate(-60%, 50%) rotate(45deg);
+				}
+
+				& svg {
+					transform: scale(0.8);
+				}
+			}
+		}
+	}
+
+	&__img {
+		width: 60%;
+		padding: 50px;
+		text-align: center;
+		background: transparent;
+	}
+
+	&__title {
+		@include fontBebas();
+		font-size: 24px;
+		color: #000;
+		margin-top: 0;
+	}
+
+	&__info {
+		width: 40%;
+		padding: 50px;
+		background: #fff;
+		text-align: left;
+
+		&-description {
+			@include fontRoboto(italic, 400);
+			font-size: 16px;
+			color: $color-brown;
+			line-height: 75px;
+			margin-top: 56px;
+		}
+	}
 }
 
 .flat {
-  &__list {
-    list-style: none;
-    &-item {
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
-    }
-    &-link {
-      @include fontRoboto(normal, 400);
-      font-size: 16px;
-      color: $color-brown;
-      transition: all 100ms ease 0ms;
-      @media (any-hover: hover) {
-        &:hover {
-          color: $color-active;
-          text-decoration: underline;
-        }
-      }
-      &.current-flat {
-        color: $color-active;
-          text-decoration: underline;
-      }
-    }
-  }
+	&__list {
+		list-style: none;
+
+		&-item {
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+
+		&-link {
+			@include fontRoboto(normal, 400);
+			font-size: 16px;
+			color: $color-brown;
+			transition: all 100ms ease 0ms;
+			@media (any-hover: hover) {
+				&:hover {
+					color: $color-active;
+					text-decoration: underline;
+				}
+			}
+
+			&.current-flat {
+				color: $color-active;
+				text-decoration: underline;
+			}
+		}
+	}
 }
 
 .flats {
-  path {
-    cursor: pointer;
-    opacity: 0;
-    transition: 180ms;
-    &:hover {
-      opacity: 1;
-    }
-    &.current-flat {
-      opacity: 1;
-    }
-  }
+	path {
+		cursor: pointer;
+		opacity: 0;
+		transition: 180ms;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.current-flat {
+			opacity: 1;
+		}
+	}
 }

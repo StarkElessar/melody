@@ -1,10 +1,10 @@
-@import 'normalize';
-@import 'fonts';
-@import 'var';
-@import 'mixins';
-@import 'global';
+@use "normalize";
+@use "fonts";
+@use "var";
+@use "mixins";
+@use "global";
 
-@import 'modules/header';
-@import 'modules/main';
-@import 'modules/footer';
-@import 'modules/modal';
+@use "modules/header";
+@use "modules/main";
+@use "modules/footer";
+@use "modules/modal";

@@ -1,98 +1,118 @@
+@use "../var" as *;
+@use "../mixins" as *;
+
 .main {
-  padding: 54px 0;
-  &-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  &__image {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 734px;
-    height: 640px;
-    border-radius: 3px;
-    overflow: hidden;
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
-    &-home path {
-      opacity: 0;
-      cursor: pointer;
-      filter: drop-shadow(1px 1px 5px rgba(#000, .4));
-      &:hover {
-        opacity: 1;
-      }
-    }
-    &-home .current-floor {
-      opacity: 1;
-    }
-  }
-  &__nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 65px 0;
-    &-title {
-      @include fontBebas();
-      margin: 0;
-      font-size: 37px;
-      text-align: center;
-      text-transform: uppercase;
-      color: $color-brown;
-    }
-    &-btn {
-      display: inline-block;
-      width: 300px;
-      height: 50px;
-      border: none;
-      outline: none;
-      border-radius: 6px;
-      @include fontRoboto(normal, 400);
-      color: $color-white;
-      font-size: 16px;
-      background-color: $color-active;
-      box-shadow: 0 0 2px 0 rgba(#000, 0.2),
-                  0 0 5px 0 rgba(#000, 0.2),
-                  0 0 10px 0 rgba(#000, 0.2);
-      transition: 350ms;
-      &:hover {
-        background-color: $color-active-hover;
-        box-shadow: 0 0 2px 0 rgba(#000, 0.4),
-                    0 0 5px 0 rgba(#000, 0.4),
-                    0 0 10px 0 rgba(#000, 0.4);
-      }
-    }
-  }
-  .counter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__arrow {
-      outline: 0;
-      border: none;
-      background-color: transparent;
-      & svg path {
-          fill: $color-active;
-          transition: all 200ms;
-        }
-      &:hover {
-        svg path {
-          fill: $color-active-hover;
-          filter: drop-shadow(1px 1px 2px rgba(#000, .3));
-        }
-      }
-      &-down {
-        transform: rotateX(180deg);
-      }
-    }
-    &__number {
-      @include fontBebas();
-      color: $color-brown;
-      font-size: 125px;
-    }
-  }
+	flex-grow: 1;
+	padding: 54px 0;
+
+	&-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&__image {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		width: 734px;
+		height: 640px;
+		border-radius: 3px;
+		overflow: hidden;
+
+		& img {
+			width: 100%;
+			object-fit: cover;
+		}
+
+		&-home path {
+			opacity: 0;
+			cursor: pointer;
+			filter: drop-shadow(1px 1px 5px rgba(#000, .4));
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		&-home .current-floor {
+			opacity: 1;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: 65px 0;
+
+		&-title {
+			@include fontBebas();
+			margin: 0;
+			font-size: 37px;
+			text-align: center;
+			text-transform: uppercase;
+			color: $color-brown;
+		}
+
+		&-btn {
+			display: inline-block;
+			width: 300px;
+			height: 50px;
+			border: none;
+			outline: none;
+			border-radius: 6px;
+			@include fontRoboto(normal, 400);
+			color: $color-white;
+			font-size: 16px;
+			background-color: $color-active;
+			box-shadow: 0 0 2px 0 rgba(#000, 0.2),
+			0 0 5px 0 rgba(#000, 0.2),
+			0 0 10px 0 rgba(#000, 0.2);
+			transition: 350ms;
+
+			&:hover {
+				background-color: $color-active-hover;
+				box-shadow: 0 0 2px 0 rgba(#000, 0.4),
+				0 0 5px 0 rgba(#000, 0.4),
+				0 0 10px 0 rgba(#000, 0.4);
+			}
+		}
+	}
+
+	.counter {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		&__arrow {
+			outline: 0;
+			border: none;
+			background-color: transparent;
+
+			& svg path {
+				fill: $color-active;
+				transition: all 200ms;
+			}
+
+			&:hover {
+				svg path {
+					fill: $color-active-hover;
+					filter: drop-shadow(1px 1px 2px rgba(#000, .3));
+				}
+			}
+
+			&-down {
+				transform: rotateX(180deg);
+			}
+		}
+
+		&__number {
+			@include fontBebas();
+			color: $color-brown;
+			font-size: 125px;
+		}
+	}
 }
